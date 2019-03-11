@@ -4,11 +4,11 @@ tohecwitit.py is a tiny python script with the single job of publishing a log ev
 
 ## Installation
 * Clone this repo
- - `git clone https://github.com/thejeffreystone/to_hec_wit_it.git`
+ - `git clone https://github.com/thejeffreystone/tiny_splunker`
 * cd to dir `tiny_splunker`
 * install required python libraries
  - `pip install -r requirements.txt`
- - `git clone https://github.com/thejeffreystone/alpha_vantage_to_mqtt.git`
+ - `pip install git+git://github.com/georgestarcher/Splunk-Class-httpevent.git`
 * cp env-sample to .env
  - `cp env-sample .env`
 * Modify .env to match your environmnt:
@@ -44,7 +44,7 @@ If you are using Splunk cloud, set `splunk_version=cloud` and for splunk_server 
 Just call tohecwitit.py and pass arguments:
 
 ```
-usage: toHecWitIt [-h] [-i IDX] [-s SRC] [-st SRCTYPE] -e EVENT
+usage: tohecwittt [-h] [-i IDX] [-s SRC] [-st SRCTYPE] -e EVENT
 
 Python based Splunk HEC logger
 
