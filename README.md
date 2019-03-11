@@ -44,7 +44,7 @@ If you are using Splunk cloud, set `splunk_version=cloud` and for splunk_server 
 Just call tohecwitit.py and pass arguments:
 
 ```
-usage: toHecWitIt [-h] [-i IDX] [-s SRC] [-st SRCTYPE] -e EVENT
+usage: tohecwittt [-h] [-i IDX] [-s SRC] [-st SRCTYPE] -e EVENT
 
 Python based Splunk HEC logger
 
