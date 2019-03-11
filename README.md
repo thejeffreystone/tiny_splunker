@@ -8,6 +8,7 @@ tohecwitit.py is a tiny python script with the single job of publishing a log ev
 * cd to dir `tiny_splunker`
 * install required python libraries
  - `pip install -r requirements.txt`
+ - `git clone https://github.com/thejeffreystone/alpha_vantage_to_mqtt.git`
 * cp env-sample to .env
  - `cp env-sample .env`
 * Modify .env to match your environmnt:
