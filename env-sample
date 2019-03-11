@@ -1,0 +1,16 @@
+# Splunk Server:
+splunk_server=192.168.1.20
+# Splunk HEC Port - Default is 8088:
+splunk_hec_port=8088
+# Splunk Hec SSL:
+splunk_hec_ssl=False
+# Splunk HEC Token:
+splunk_hec_key=
+# Splunk sourcetype:
+splunk_sourcetype=tiny_splunker
+# Splunk index:
+splunk_index=main
+# Splunk Source:
+splunk_source=
+# Splunk host:
+splunk_host=jarvis
