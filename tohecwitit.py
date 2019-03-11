@@ -11,6 +11,7 @@ import time
 import sys
 import argparse
 import json
+import requests
 from splunk_http_event_collector import http_event_collector
 from dotenv import load_dotenv
 load_dotenv()
@@ -22,6 +23,7 @@ http_event_collector_host = os.getenv("splunk_server")
 http_event_collector_ssl = os.getenv("splunk_hec_ssl")
 http_event_collector_port = int(os.getenv("splunk_hec_port"))
 splunk_host = os.getenv("splunk_host")
+splunk_version = os.getenv("splunk_version")
 splunk_source = os.getenv("splunk_source")
 splunk_sourcetype = os.getenv("splunk_sourcetype")
 splunk_index = os.getenv("splunk_index")
@@ -37,6 +39,7 @@ if http_event_collector_ssl == "False":
 	http_event_collector_ssl = False
 else:
 	http_event_collector_ssl = True
+
 
 # Get Args
 if args.idx:
@@ -56,9 +59,6 @@ else:
 
 def splunkIt():
 	# Splunk it
-	logevent = http_event_collector(http_event_collector_key, http_event_collector_host, http_event_port = http_event_collector_port, http_event_server_ssl = http_event_collector_ssl)
-	logevent.popNullFields = True
-
 	payload = {}
 	payload.update({"index":splunk_index})
 	payload.update({"sourcetype":splunk_sourcetype})
@@ -66,16 +66,27 @@ def splunkIt():
 	payload.update({"host":splunk_host})
 	payload.update({"event":args.event})
 
-	logevent.sendEvent(payload)
-	logevent.flushBatch()
+	if splunk_version == 'enterprise':
+		logevent = http_event_collector(http_event_collector_key, http_event_collector_host, http_event_port = http_event_collector_port, http_event_server_ssl = http_event_collector_ssl)
+		logevent.popNullFields = True
+		try:
+			logevent.sendEvent(payload)
+		except Exception as e:
+			print(e)
+			sys.exit()
+		logevent.flushBatch()
+
+	if splunk_version == 'cloud':
+		# Will just post it
+		headers = {'Authorization': http_event_collector_key,}
+		data = payload
+		response = requests.post(http_event_collector_host, headers=headers, data=data)
+		print(response)
+
 	print(payload)
 
 def main():
-	try:
-		splunkIt()
-	except Exception as e:
-		print(e)
-		sys.exit()
+	splunkIt()
 
 if __name__ == "__main__":
     main()
