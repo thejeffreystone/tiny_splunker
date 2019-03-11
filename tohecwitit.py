@@ -78,7 +78,7 @@ def splunkIt():
 
 	if splunk_version == 'cloud':
 		# Will just post it
-		headers = {'Authorization': http_event_collector_key,}
+		headers = {'Authorization': 'Splunk {}'.format(http_event_collector_key),}
 		data = payload
 		response = requests.post(http_event_collector_host, headers=headers, data=data)
 		print(response)
