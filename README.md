@@ -4,7 +4,7 @@ tohecwitit.py is a tiny python script with the single job of publishing a log ev
 
 ## Installation
 * Clone this repo
- - `git clone https://github.com/thejeffreystone/to_hec_wit_it.git`
+ - `git clone https://github.com/thejeffreystone/tiny_splunker`
 * cd to dir `tiny_splunker`
 * install required python libraries
  - `pip install -r requirements.txt`
