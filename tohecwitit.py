@@ -28,7 +28,7 @@ splunk_source = os.getenv("splunk_source")
 splunk_sourcetype = os.getenv("splunk_sourcetype")
 splunk_index = os.getenv("splunk_index")
 
-parser = argparse.ArgumentParser(prog='toHecWitIt',epilog='toHecWitIt is part of Tiny Splunker',description='Python based Splunk HEC logger')
+parser = argparse.ArgumentParser(prog='tohecwittt',epilog='tohecwittt is part of Tiny Splunker',description='Python based Splunk HEC logger')
 parser.add_argument('-i','--idx',help='Splunk Index', required=False)
 parser.add_argument('-s','--src',help='Source of Event', required=False)
 parser.add_argument('-st','--srctype',help='Event Sourcetype', required=False)
@@ -77,13 +77,17 @@ def splunkIt():
 		logevent.flushBatch()
 
 	if splunk_version == 'cloud':
-		# Will just post it
+		# Will just post it via requests
 		headers = {'Authorization': 'Splunk {}'.format(http_event_collector_key),}
 		data = payload
 		response = requests.post(http_event_collector_host, headers=headers, json=payload)
-		print(response)
-		
-	print(payload)
+		if response == 200:
+			sys.exit()
+		else:
+			print("Attempt returned {}".format(response))
+			sys.exit()
+
+	
 
 def main():
 	splunkIt()
