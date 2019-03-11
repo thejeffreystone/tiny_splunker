@@ -80,9 +80,9 @@ def splunkIt():
 		# Will just post it
 		headers = {'Authorization': 'Splunk {}'.format(http_event_collector_key),}
 		data = payload
-		response = requests.post(http_event_collector_host, headers=headers, data=data)
+		response = requests.post(http_event_collector_host, headers=headers, json=payload)
 		print(response)
-
+		
 	print(payload)
 
 def main():
