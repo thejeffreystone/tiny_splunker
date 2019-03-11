@@ -1,2 +1,1 @@
-Splunk-HEC>=1.5
 python-dotenv>=0.10.1
