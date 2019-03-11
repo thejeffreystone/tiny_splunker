@@ -13,6 +13,8 @@ tohecwitit.py is a tiny python script with the single job of publishing a log ev
  - `cp env-sample .env`
 * Modify .env to match your environmnt:
 ```
+# Splunk Version:
+splunk_version:enterprise
 # Splunk Server:
 splunk_server=192.168.1.20
 # Splunk HEC Port - Default is 8088:
@@ -30,6 +32,12 @@ splunk_source=
 # Splunk host:
 splunk_host=jarvis
 ```
+
+## Splunk Setup
+
+If you are using Splunk Enterprise, you just need the ip or the domain of your splunk server without the "http://"
+
+If you are using Splunk cloud, set `splunk_version=cloud` and for splunk_server this should be your HEC Endpoint which will be something like `https://http-inputs-mycompany.splunkcloud.com/services/collector/event`
 
 ## Usage
 
