@@ -28,7 +28,7 @@ splunk_source = os.getenv("splunk_source")
 splunk_sourcetype = os.getenv("splunk_sourcetype")
 splunk_index = os.getenv("splunk_index")
 
-parser = argparse.ArgumentParser(prog='tohecwittt',epilog='tohecwittt is part of Tiny Splunker',description='Python based Splunk HEC logger')
+parser = argparse.ArgumentParser(prog='tohecwithit',epilog='tohecwittt is part of Tiny Splunker',description='Python based Splunk HEC logger')
 parser.add_argument('-i','--idx',help='Splunk Index', required=False)
 parser.add_argument('-s','--src',help='Source of Event', required=False)
 parser.add_argument('-st','--srctype',help='Event Sourcetype', required=False)
