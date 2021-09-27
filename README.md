@@ -1,4 +1,4 @@
-# To Hec With It - Tiny Splunker
+# To Hec Wit It - Tiny Splunker
 
 tohecwitit.py is a tiny python script with the single job of publishing a log event to Splunk's HTTP Event Collector.
 
@@ -63,7 +63,7 @@ If none of the optional requirements are passed the script will use the values s
 
 ### Example:
 
-`./toHecWitIt.py -i main -e '{"log_level":"info","action":"Update","message":"User has been added"}'`
+`./tohecwitit.py -i main -e '{"log_level":"info","action":"Update","message":"User has been added"}'`
 
 ## Compatibility
 
